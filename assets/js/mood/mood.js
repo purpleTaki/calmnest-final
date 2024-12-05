@@ -5,7 +5,7 @@ $(document).on("click", "#submitMood", function () {
   var userID = $("#userID").val();
   console.log(moods);
   $.post({
-    url: base_url + "mobile/service/Mobile_service/post_mood",
+    url: base_url + "mobile/Mobile_service/post_mood",
     // selector: '.form-control',
     data: {
       User: userID,
@@ -46,7 +46,7 @@ $(document).on("click", ".acknowledgebtn", function () {
   var searchParams = new URLSearchParams(queryString);
   var ID = searchParams.get("ID");
   $.post({
-    url: base_url + "mobile/service/Mobile_service/acknowledge",
+    url: base_url + "mobile/Mobile_service/acknowledge",
     // selector: '.form-control',
     data: {
       User: ID,

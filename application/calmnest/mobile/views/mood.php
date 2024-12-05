@@ -198,7 +198,7 @@ $color = ($mood == 'happy') ? 'green' : (($mood == 'normal') ? 'black' : (($mood
         <div class="container-fluid">
             <div class="row">
                 <div class="circle-container center mt-3 ">
-                    <p id="question" class="mood-text pt-3">What are you feeling today?</p>
+                    <p id="question" class="mood-text">What are you feeling today?</p>
                     <p class="m-0 mb-1" id="current_mood" class="mood-text" <?= @$mood == null ? 'hidden' : '' ?>>You feel <strong style="color:<?= @$color ?>"><?= @$mood->md ?></strong></p>
                     <h3><?= $current_date; ?></h3>
                     <h4><?= $current_day; ?></h4>
