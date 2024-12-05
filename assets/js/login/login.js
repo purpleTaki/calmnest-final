@@ -37,7 +37,7 @@ $(document).ready(function () {
             alert("Password does not match. Please try again.");
         }
         $.ajax({
-            url: base_url + 'login/service/login_service/change_pass',
+            url: base_url + 'login/login_service/change_pass',
             type: "POST",
             dataType: "JSON",
             data: {
