@@ -145,9 +145,9 @@ main_header(['dashboard']);
     <div class="btnHolder col-12" style="margin:auto; padding:auto">
         <h3 class="col-12 pt-4 pb-5" style="color:black;">Welcome to CALM asdEST</h3>
         <a href="<?php echo base_url() ?>Mobile/student_profile?ID=<?= @$userID ?>"> <button type="button" id="profBtn" style="margin-top: 3rem;" class="btn btn-block btn-outline-primary btn-lg p-1 mb-5 col-12">Profile</button></a>
-        <a href="<?php echo base_url() ?>Mobile/schedule_appointment?ID=<?= @$userID ?>"> <button type="button" id="schedBtn" class="btn btn-block btn-outline-success btn-lg mt-2 p-1 mb-5 col-12">Appointment</button></a>
-        <a href="<?php echo base_url() ?>Mobile/view_appointments?ID=<?= @$userID ?>"> <button type="button" id="viewApt" class="btn btn-block btn-outline-success btn-lg mt-2 p-1 mb-5 col-12">View Appointments</button></a>
-        <a href="<?php echo base_url() ?>Mobile/mood?ID=<?= @$userID ?>"> <button type="button" id="moodBtn" class="btn btn-block btn-outline-success btn-lg mt-2 p-1 mb-5 col-12">Mood</button></a>
+        <a href="<?php echo base_url() ?>Mobile/schedule_appointment?ID=<?= @$userID ?>"> <button type="button" id="schedBtn" class="btn btn-block btn-outline-primary btn-lg mt-2 p-1 mb-5 col-12">Appointment</button></a>
+        <a href="<?php echo base_url() ?>Mobile/view_appointments?ID=<?= @$userID ?>"> <button type="button" id="viewApt" class="btn btn-block btn-outline-primary btn-lg mt-2 p-1 mb-5 col-12">View Appointments</button></a>
+        <a href="<?php echo base_url() ?>Mobile/mood?ID=<?= @$userID ?>"> <button type="button" id="moodBtn" class="btn btn-block btn-outline-primary btn-lg mt-2 p-1 mb-5 col-12">Mood</button></a>
         
 
     </div>

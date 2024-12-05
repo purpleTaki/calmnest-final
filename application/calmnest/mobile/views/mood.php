@@ -197,7 +197,7 @@ $color = ($mood == 'happy') ? 'green' : (($mood == 'normal') ? 'black' : (($mood
     <section>
         <div class="container-fluid">
             <div class="row">
-                <div class="circle-container center mt-3">
+                <div class="circle-container center mt-3 ">
                     <p id="question" class="mood-text pt-3">What are you feeling today?</p>
                     <p class="m-0 mb-1" id="current_mood" class="mood-text" <?= @$mood == null ? 'hidden' : '' ?>>You feel <strong style="color:<?= @$color ?>"><?= @$mood->md ?></strong></p>
                     <h3><?= $current_date; ?></h3>
@@ -210,7 +210,7 @@ $color = ($mood == 'happy') ? 'green' : (($mood == 'normal') ? 'black' : (($mood
             <div class="col-12 center">
                 <input value="1" data-mood="1" data-pts="-2" name="moods" id="radio1" type="radio" onclick="toggleRadio(this)">
                 <label for="radio1" class="radio-icon-label" style="margin-left:2rem">
-                    <span class="material-symbols-outlined icons">sentiment_very_satisfied</span>
+                    <span class="material-symbols-outlined icons">sentiment_excited</span>
                 </label>
 
                 <input value="2" data-mood="2" data-pts="-1" name="moods" id="radio2" type="radio" onclick="toggleRadio(this)">
@@ -221,7 +221,7 @@ $color = ($mood == 'happy') ? 'green' : (($mood == 'normal') ? 'black' : (($mood
             <div class="col-12 mt-5 center">
                 <input value="3" data-mood="3" data-pts="1" name="moods" id="radio3" type="radio" onclick="toggleRadio(this)">
                 <label for="radio3" class="radio-icon-label" style="margin-left:2rem">
-                    <span class="material-symbols-outlined icons ">sentiment_dissatisfied</span>
+                    <span class="material-symbols-outlined icons ">sentiment_worried</span>
                 </label>
 
                 <input value="4" data-mood="4" data-pts="2" name="moods" id="radio4" type="radio" onclick="toggleRadio(this)">
@@ -230,7 +230,7 @@ $color = ($mood == 'happy') ? 'green' : (($mood == 'normal') ? 'black' : (($mood
                 </label>
             </div>
             <div class="col-12 center button-container">
-                <button type="button" id="submitMood" class="btn btn-success">Submit</button>
+                <button type="button" id="submitMood" class="btn btn-primary">Submit</button>
                 <div class="row">
                     <div class="col-6 center mt-3">
                         <button type="button" id="viewMood" class="btn btn-primary" data-toggle="modal" data-target="#modal-stats">View Mood Stats</button>
