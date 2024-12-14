@@ -78,7 +78,7 @@ main_header(['dashboard']);
               <th style="color:#026E09">Date</th>
               <th style="color:#026E09">Time</th>
               <th style="color:#026E09">Status</th>
-              <th style="color:#026E09">Remarks</th>
+              <!-- <th style="color:#026E09">Remarks</th> -->
             </tr>
           </thead>
           <tbody>
@@ -102,7 +102,7 @@ main_header(['dashboard']);
                         }
                         ?>
                      </td>
-                     <td class="text-center"><?= @$value->Remarks?></td>
+                     <!-- <td class="text-center"><?= @$value->Remarks?></td> -->
 
                     
                 </tr>
@@ -127,7 +127,7 @@ main_header(['dashboard']);
               <th style="color:#026E09">Date</th>
               <th style="color:#026E09">Actions</th>
               <th style="color:#026E09">Status</th>
-              <th style="color:#026E09">Remarks</th>
+              <!-- <th style="color:#026E09">Remarks</th> -->
           <tbody>
             <?php foreach ($counselor_appointment as $appointments => $value) { ?>
             <tr data-widget="expandable-table" aria-expanded="false">
@@ -157,7 +157,7 @@ main_header(['dashboard']);
                         }
                         ?>
                      </td>
-              <td class="text-center col-5"><?=@$value->Remarks?></td>
+              <!-- <td class="text-center col-5"><?=@$value->Remarks?></td> -->
             </tr>
               <!-- modal for appointment approval-->
             <div class="modal fade" id="modal_cancel_remark_<?=@$value->aptID?>">

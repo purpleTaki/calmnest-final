@@ -25,7 +25,7 @@ main_header(['appointment']);
                                     <th class="text-center">Date</th>
                                     <th class="text-center">Time</th>
                                     <th class="text-center">Actions</th>
-                                    <th class="text-center">Remarks to Student</th>
+                                    <!-- <th class="text-center">Remarks to Student</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,7 +45,7 @@ main_header(['appointment']);
                                             <?php if ($session->usertype == 3) {
                                             ?>
                                                 <td class="text-center"><?= @$status ?></td>
-                                                <td class="text-center"><?= @$val->Remarks ?? '-' ?></td>
+                                                <!-- <td class="text-center"><?= @$val->Remarks ?? '-' ?></td> -->
                                             <?php
                                             } else { ?>
                                                 <td class="text-center">
@@ -54,7 +54,7 @@ main_header(['appointment']);
                                                     <button type="button" class="btn btn-danger btn-modal" data-toggle="modal" data-target="#modal-remarks" data-stat="2" data-id="<?= @$val->ID ?>" <?= $status == 2 ? 'disabled' : ''; ?>><strong>X</strong></button>
                                                 </td>
                                                 
-                                                <td class="text-center"><?= @$val->Remarks ?? '-' ?></td>
+                                                <!-- <td class="text-center"><?= @$val->Remarks ?? '-' ?></td> -->
                                             <?php } ?>
                                         </tr>
                                 <?php
@@ -77,7 +77,7 @@ main_header(['appointment']);
                                     <th class="text-center">Date</th>
                                     <th class="text-center">Time</th>
                                     <th class="text-center">Status</th>
-                                    <th class="text-center">Remarks from Student</th>
+                                    <!-- <th class="text-center">Remarks from Student</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,7 +96,7 @@ main_header(['appointment']);
                                             <td class="text-center">
                                                 <?= @$status ?>
                                             </td>
-                                            <td class="text-center"><?= @$val->Remarks ?? "--- " ?></td>
+                                            <!-- <td class="text-center"><?= @$val->Remarks ?? "--- " ?></td> -->
                                         </tr>
                                 <?php
                                     }

@@ -19,7 +19,7 @@ $(document).ready(function () {
                         window.location = base_url + "mobile?ID=" + response.ID;
                     }
                     else{
-                        window.location = base_url + "user";
+                        window.location = base_url + "dashboard";
                     }}
                 }
             }
@@ -51,7 +51,7 @@ $(document).ready(function () {
                         window.location = base_url + "mobile?ID=" + response.ID;
                     }
                     else{
-                        window.location = base_url + "user";
+                        window.location = base_url + "dashboard";
                     }
                 }
             }

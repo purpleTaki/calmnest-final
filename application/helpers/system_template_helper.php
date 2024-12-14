@@ -70,12 +70,12 @@ function main_header($menubar = [])
           </div>
           <!-- Right navbar links -->
           <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-            <li class="nav-item" <?=@$session->usertype==1 && @$session->notif>0 ? '' : 'hidden' ?>>
+            <li class="nav-item" <?=@$session->usertype!=1 && @$session->notif>0 ? 'hidden' : 'block' ?>>
               <marquee>
                 You have <?= $session->notif?> pending appointment(s)
               </marquee>
             </li>
-            <li class="nav-item" <?=@$session->usertype!=0? '' : 'hidden' ?>>
+            <li class="nav-item" <?=@$session->usertype==0? 'hidden' : 'block' ?>>
               <p style="font-size: 0.8rem; padding-top: 10px;">Hello, Mr/Ms <?= ucfirst(@$session->lname)?> </p>
             </li>
             <li class="nav-item">
