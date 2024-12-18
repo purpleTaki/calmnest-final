@@ -91,56 +91,43 @@ class Appointment_services_model extends CI_Model
 
 
     public function update_status()
-    {
-        try {
-            if (($this->status == 1 && empty($this->remarks)) || ($this->status == 2 && empty($this->remarks))) {
-                throw new Exception(MISSING_DETAILS, true);
+{
+    try {
+        $remarks = $this->remarks;
+
+        // Validate status and remarks logic
+        if (empty($remarks)) {
+            if ($this->status == 1) {
+                $remarks = "Approved";
+            } elseif ($this->status == 0) {
+                $remarks = "Pending";
+            } elseif ($this->status == 2) {
+                $remarks = "Declined";
             }
-
-            $remarks = $this->remarks ?? 0;
-
-            $status = ($this->status == '1' ? 1 : ($this->status == '0' ? 0 : 2));
-            $data = array(
-                'Status' => $status,
-                'Remarks' => $remarks
-            );
-
-            $this->db->trans_start();
-            $this->db->where('ID', $this->ID);
-            $this->db->update($this->Table->appointment, $data);
-
-            $this->db->trans_complete();
-
-            //updates notification yes
-            $notif = $this->session->notif;
-
-            // if($status!='Pending'){
-            // echo 'aaaaaaa';
-            $this->db->select('*');
-            $this->db->from($this->Table->user);
-            $this->db->where('Username', $this->session->username);
-            $query = $this->db->get()->row();
-
-            $this->db->select('ID');
-            $this->db->where('counselorID', $query->ID);
-            $this->db->where('Status', 'Pending');
-            $this->db->where('DateStatus', null);
-            $this->db->where('appointer', 0);
-            $this->db->from($this->Table->appointment);
-            $notif = $this->db->get()->result();
-            $query->notif = count($notif);
-            set_userdata(USER, (array)$query);
-            // }
-
-            if ($this->db->trans_status() === FALSE) {
-                $this->db->trans_rollback();
-                throw new Exception(ERROR_PROCESSING, true);
-            } else {
-                $this->db->trans_commit();
-                return array('message' => SAVED_SUCCESSFUL, 'has_error' => false, 'stat' => $status,  'a' => count($notif));
-            }
-        } catch (Exception $msg) {
-            return (array('message' => $msg->getMessage(), 'has_error' => true));
         }
+
+        $status = ($this->status == 1 ? 1 : ($this->status == 0 ? 0 : 2));
+        $data = array(
+            'Status' => $status,
+            'Remarks' => $remarks,
+        );
+
+        $this->db->trans_start();
+        $this->db->where('ID', $this->ID);
+        $this->db->update($this->Table->appointment, $data);
+
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            throw new Exception(ERROR_PROCESSING, true);
+        } else {
+            $this->db->trans_commit();
+            return array('message' => SAVED_SUCCESSFUL, 'has_error' => false, 'stat' => $status);
+        }
+    } catch (Exception $msg) {
+        return array('message' => $msg->getMessage(), 'has_error' => true);
     }
+}
+
 }

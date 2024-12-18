@@ -50,13 +50,14 @@ class Appointment_service extends MY_Controller
 	}
 
 	public function update_status()
-	{
-		$this->asModel->ID = $this->input->post("ID");
-		$this->asModel->status = $this->input->post("status");
-		$this->asModel->remarks = $this->input->post("remarks");
-		$this->asModel->session = $this->session;
+		{
+			$this->asModel->ID = $this->input->post("ID");
+			$this->asModel->status = $this->input->post("status");
+			$this->asModel->remarks = $this->input->post("remarks");
+			$this->asModel->session = $this->session;
 
-		$response = $this->asModel->update_status();
-		echo json_encode($response);
-	}
+			$response = $this->asModel->update_status();
+			echo json_encode($response);
+		}
+
 }

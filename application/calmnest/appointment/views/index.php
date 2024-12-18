@@ -33,7 +33,7 @@ main_header(['appointment']);
                                 if (!empty($appointments)) {
                                     // var_dump($appointments);
                                     foreach ($appointments as $k => $val) {
-                                        $status = ($val->Status == '1' ? 'Approved' : ($val->Status == '0' ? 'Pending' : 'Appointment declined'));
+                                        $status = ($val->Status == '1' ? 'Appointment Approved' : ($val->Status == '0' ? 'Appointment Pending' : 'Appointment declined'));
 
                                 ?>
                                         <tr>
@@ -49,10 +49,12 @@ main_header(['appointment']);
                                             <?php
                                             } else { ?>
                                                 <td class="text-center">
-                                                    <button type="button" class="btn btn-success btn-modal" data-toggle="modal" data-target="#modal-remarks" data-stat="1" data-id="<?= @$val->ID ?>" <?= $status == 1 ? 'disabled' : ''; ?>><i class="fas fa-check" value="Approved"></i></button>
-                                                    <button type="button" class="btn btn-primary btn-status" data-stat="0" data-id="<?= @$val->ID ?>" <?= $status == 0 ? 'disabled' : ''; ?>><i class="fas fa-spinner"></i></button>
-                                                    <button type="button" class="btn btn-danger btn-modal" data-toggle="modal" data-target="#modal-remarks" data-stat="2" data-id="<?= @$val->ID ?>" <?= $status == 2 ? 'disabled' : ''; ?>><strong>X</strong></button>
+                                                    <button type="button" class="btn btn-success btn-update-stat" data-stat="1" data-id="<?= @$val->ID ?>" <?= $val->Status == '1' ? 'disabled' : ''; ?>> <i class="fas fa-check"></i> </button>
+                                                    <button type="button" class="btn btn-primary btn-update-stat" data-stat="0" data-id="<?= @$val->ID ?>" <?= $val->Status == '0' ? 'disabled' : ''; ?>> <i class="fas fa-spinner"></i></button>
+                                                    <button type="button" class="btn btn-danger btn-update-stat" data-stat="2" data-id="<?= @$val->ID ?>" <?= $val->Status == '2' ? 'disabled' : ''; ?>> <strong>X</strong> </button>
                                                 </td>
+
+
                                                 
                                                 <td class="text-center">
                                                 <?= @$status ?>

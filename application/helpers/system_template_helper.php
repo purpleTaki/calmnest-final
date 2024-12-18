@@ -5,6 +5,17 @@ function main_header($menubar = [])
   $ci = &get_instance();
   @$session = (object)get_userdata(USER);
   // var_dump($session);
+
+  $counselorID = $session->ID; // Replace this with the correct session key for the user ID if needed
+
+  $sql = "SELECT COUNT(*) AS pending_count 
+          FROM appointments 
+          WHERE Status = 0 
+          AND counselorID = ?";
+          
+  $query = $ci->db->query($sql, array($counselorID));
+  $result = $query->row();
+  $pending_count = $result->pending_count;
 ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -71,9 +82,11 @@ function main_header($menubar = [])
           <!-- Right navbar links -->
           <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
             <li class="nav-item" <?=@$session->usertype!=1 && @$session->notif>0 ? 'hidden' : 'block' ?>>
+            <?php if ($pending_count > 0): ?>
               <marquee>
-                You have <?= $session->notif?> pending appointment(s)
+                  You have <?= $pending_count ?> pending appointment(s)
               </marquee>
+            <?php endif; ?>
             </li>
             <li class="nav-item" <?=@$session->usertype==0? 'hidden' : 'block' ?>>
               <p style="font-size: 0.8rem; padding-top: 10px;">Hello, Mr/Ms <?= ucfirst(@$session->lname)?> </p>
