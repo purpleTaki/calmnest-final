@@ -25,7 +25,7 @@ main_header(['appointment']);
                                     <th class="text-center">Date</th>
                                     <th class="text-center">Time</th>
                                     <th class="text-center">Actions</th>
-                                    <!-- <th class="text-center">Remarks to Student</th> -->
+                                    <th class="text-center">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -33,7 +33,7 @@ main_header(['appointment']);
                                 if (!empty($appointments)) {
                                     // var_dump($appointments);
                                     foreach ($appointments as $k => $val) {
-                                        $status = ($val->Status == '1' ? 'Approved' : ($val->Status == '0' ? 'Pending' : 'Denied'));
+                                        $status = ($val->Status == '1' ? 'Approved' : ($val->Status == '0' ? 'Pending' : 'Appointment declined'));
 
                                 ?>
                                         <tr>
@@ -45,16 +45,18 @@ main_header(['appointment']);
                                             <?php if ($session->usertype == 3) {
                                             ?>
                                                 <td class="text-center"><?= @$status ?></td>
-                                                <!-- <td class="text-center"><?= @$val->Remarks ?? '-' ?></td> -->
+                                                <td class="text-center"><?= @$val->Remarks ?? '-' ?></td>
                                             <?php
                                             } else { ?>
                                                 <td class="text-center">
-                                                    <button type="button" class="btn btn-success btn-modal" data-toggle="modal" data-target="#modal-remarks" data-stat="1" data-id="<?= @$val->ID ?>" <?= $status == 1 ? 'disabled' : ''; ?>><i class="fas fa-check"></i></button>
+                                                    <button type="button" class="btn btn-success btn-modal" data-toggle="modal" data-target="#modal-remarks" data-stat="1" data-id="<?= @$val->ID ?>" <?= $status == 1 ? 'disabled' : ''; ?>><i class="fas fa-check" value="Approved"></i></button>
                                                     <button type="button" class="btn btn-primary btn-status" data-stat="0" data-id="<?= @$val->ID ?>" <?= $status == 0 ? 'disabled' : ''; ?>><i class="fas fa-spinner"></i></button>
                                                     <button type="button" class="btn btn-danger btn-modal" data-toggle="modal" data-target="#modal-remarks" data-stat="2" data-id="<?= @$val->ID ?>" <?= $status == 2 ? 'disabled' : ''; ?>><strong>X</strong></button>
                                                 </td>
                                                 
-                                                <!-- <td class="text-center"><?= @$val->Remarks ?? '-' ?></td> -->
+                                                <td class="text-center">
+                                                <?= @$status ?>
+                                            </td>
                                             <?php } ?>
                                         </tr>
                                 <?php
@@ -85,7 +87,7 @@ main_header(['appointment']);
                                 if (!empty($appointments_c)) {
                                     foreach ($appointments_c as $k => $val) {
                                         // $status = ($val->Status == '1' ? 1 : ($val->Status == '0' ? 0 : 2));
-                                        $status = ($val->Status == '1' ? 'Approved' : ($val->Status == '0' ? 'Pending' : 'Denied'));
+                                        $status = ($val->Status == '1' ? 'Approved' : ($val->Status == '0' ? 'Pending' : 'Appointment declined'));
                                 ?>
                                         <tr>
                                             <td class="text-center"><?= @$k + 1 . '.' ?></td>
@@ -151,6 +153,8 @@ main_footer();
 ?>
 <script src="<?php echo base_url() ?>/assets/js/appointment/appointment_web.js"></script>
 <script>
+
+    
     setInterval(function() {
         location.reload();
     }, 300000);

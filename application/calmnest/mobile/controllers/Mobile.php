@@ -33,7 +33,8 @@ class Mobile extends MY_Controller
 		// ) {
 		// 	redirect(base_url() . 'login', 'refresh');
 		// }
-
+		
+		$this->data['recent_article_count'] = $this->mModel->count_recent_articles();
 		$this->data['session'] =  $this->session;
 		$this->data['content'] = 'index';
 		$this->load->view('layout', $this->data);
@@ -93,6 +94,29 @@ class Mobile extends MY_Controller
 		$this->data['content'] = 'view_articles';
 		$this->load->view('layout', $this->data);
 	}
+
+	public function count_recent_articles() {
+		$start_of_week = date('Y-m-d H:i:s', strtotime('monday this week'));
+		$this->db->from($this->Table->article);
+		$this->db->where('archived', 0);
+		$this->db->where('date_added >=', $start_of_week);
+	
+		return $this->db->count_all_results(); // Return the count of articles
+	}
+	
+	
+	public function view_articles_with_count() {
+		// Call the existing view_articles() method to get articles
+		$this->mModel->view_articles();
+	
+		// Fetch the recent article count
+		$this->data['recent_article_count'] = $this->mModel->count_recent_articles();
+	
+		// Load the view
+		$this->data['content'] = 'view_articles';
+		$this->load->view('layout', $this->data);
+	}
+	
 }
 
 

@@ -82,6 +82,16 @@ class Mobile_model extends CI_Model
         return $query;
     }
 
+    public function count_recent_articles() {
+        $start_of_week = date('Y-m-d H:i:s', strtotime('monday this week'));
+
+        $this->db->from($this->Table->article);
+        $this->db->where('archived', 0);
+        $this->db->where('date_added >=', $start_of_week);
+    
+        return $this->db->count_all_results(); 
+    }
+
     public function get_current_mood()
     {  
         $this->db->select('um.*,' . 'm.Mood as md');

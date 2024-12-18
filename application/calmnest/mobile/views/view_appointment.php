@@ -92,9 +92,9 @@ main_header(['dashboard']);
                     <td class=""> <?php
                         $status = @$value->Status;
                         if ($status == 1) {
-                            echo 'Approved';
+                            echo 'Appointment approved';
                         } elseif ($status == 2) {
-                            echo 'Cancelled';
+                            echo 'Appointment declined';
                         } elseif ($status == 0) {
                             echo 'Pending';
                         } else {
@@ -147,9 +147,9 @@ main_header(['dashboard']);
               <td class=""> <?php
                         $status = @$value->Status;
                         if ($status == 1) {
-                            echo 'Approved';
+                            echo 'Appointment Approved';
                         } elseif ($status == 2) {
-                            echo 'Cancelled';
+                            echo 'Appointment declined';
                         } elseif ($status == 0) {
                             echo 'Pending';
                         } else {
