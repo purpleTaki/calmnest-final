@@ -84,7 +84,9 @@ function main_header($menubar = [])
             <li class="nav-item" <?=@$session->usertype!=1 && @$session->notif>0 ? 'hidden' : 'block' ?>>
             <?php if ($pending_count > 0): ?>
               <marquee>
-                  You have <?= $pending_count ?> pending appointment(s)
+                <p style="font-size: 0.8rem; padding-top: 10px;">
+                  🔔 You have <?= $pending_count ?> pending appointment(s)
+                </p>
               </marquee>
             <?php endif; ?>
             </li>

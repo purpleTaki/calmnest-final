@@ -144,15 +144,23 @@ main_header(['dashboard']);
 <div class="container">
     <div class="btnHolder col-12" style="margin:auto; padding:auto">
         <h3 class="col-12 pt-4 pb-5" style="color:black;">Welcome to CALM NEST</h3>
-        <?php if ($recent_article_count > 0): ?>
+        <!-- <?php if ($recent_article_count > 0): ?>
             <marquee>
                 <h4>
                     📢 Check the latest announcements! There are currently <?= isset($recent_article_count) ? $recent_article_count : 0 ?> new announcement(s). 📢
                 </h4>
             </marquee>
+        <?php endif; ?> -->
+
+        <?php if ($recent_article_count > 0): ?>
+            <marquee>
+                <h4>
+                    📢 There are <?= isset($recent_article_count) ? $recent_article_count : 0 ?> new announcement(s). 📢
+                </h4>
+            </marquee>
         <?php endif; ?>
 
-        <h4> DEBUGGING 📢 Check the latest announcements! There are currently <?= isset($recent_article_count) ? $recent_article_count : 0 ?> new announcement(s). 📢 </h4>
+        <!-- <h4> DEBUGGING 📢 Check the latest announcements! There are currently <?= isset($recent_article_count) ? $recent_article_count : 0 ?> new announcement(s). 📢 </h4> -->
 
         <a href="<?php echo base_url() ?>Mobile/student_profile?ID=<?= @$userID ?>"> <button type="button" id="profBtn" style="margin-top: 3rem;" class="btn btn-block btn-outline-primary btn-lg p-1 mb-5 col-12">Profile</button></a>
         <a href="<?php echo base_url() ?>Mobile/schedule_appointment?ID=<?= @$userID ?>"> <button type="button" id="schedBtn" class="btn btn-block btn-outline-primary btn-lg mt-2 p-1 mb-5 col-12">Appointment</button></a>
